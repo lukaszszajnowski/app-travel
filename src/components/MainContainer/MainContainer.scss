@@ -1,5 +1,5 @@
 .hotel {
-  width: 300px;
+  width: 200px;
   border-radius: 20px;
   overflow: hidden;
   background-color: white;
@@ -23,4 +23,6 @@
   background-color: #dedede;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
 }

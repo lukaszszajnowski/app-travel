@@ -3,6 +3,7 @@ import './App.scss';
 import MainContainer from './components/MainContainer/MainContainer';
 import Header from './components/Header/Header';
 import data from './utils/data';
+import Sidebar from './components/Sidebar/Sidebar';
 
 class App extends React.Component {
   state = {
@@ -29,7 +30,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header filterHotels={this.filterHotels} />
+        <div className="App__mainElement">
+        <Sidebar />
         <MainContainer data={this.state.hotels} />
+        </div>
       </div>
     );
   }
