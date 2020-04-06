@@ -29,5 +29,28 @@
       margin-top: 7px;
     }
   }
+}
 
+.header-second {
+  @extend .header;
+  border-radius: 0;
+  padding: 10px;
+
+  .price-field {
+    height: 100%;
+    background-color: #FFF;
+    border-radius: 20px;
+    font-size: 1rem;
+    border: none;
+
+    .pice-filter {
+      width: 100px;
+      border: none;
+    }
+
+    .dollar-icon {
+      color: #12b712;
+      margin: 0 4px;
+    }
+  }
 }
