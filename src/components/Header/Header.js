@@ -11,6 +11,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
+        <div className="search-loupe-circle"><i class="fas fa-search search-loupe"></i></div>
         <input type="text" className="search-field" placeholder="Enter location" onChange={this.handleSearch} />
       </div>
     );

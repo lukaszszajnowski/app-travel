@@ -1,28 +1,42 @@
-.hotel {
-  width: 200px;
-  border-radius: 20px;
-  overflow: hidden;
-  background-color: white;
-  margin-right: 15px;
-  margin-bottom: 15px;
+.main-container {
+  background-color: #eeeeee;
+  display: flex;
+  padding: 50px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 
-  img {
-    width: 100%;
-  }
+  .hotels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-  &__info {
-    padding: 20px 15px 30px 15px;
+    .hotel {
+      width: 30%;
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: white;
+      margin-right: 20px;
+      margin-bottom: 20px;
 
-    .hotel-name {
-      font-size: 1.6rem;
+      img {
+        width: 100%;
+      }
+
+      &__info {
+        padding: 20px 15px 30px 15px;
+
+        .hotel-name {
+          display: block;
+          font-size: 1.3rem;
+          font-weight: bold;
+          height: 55px;
+        }
+
+        p {
+          color: #777777;
+          margin: 7px 0;
+        }
+      }
     }
   }
-}
-
-.main-container {
-  background-color: #dedede;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
 }

@@ -1,35 +1,38 @@
 import React from 'react';
+import sidebarData from '../../utils/sidebar_data';
 import './Sidebar.scss';
-import sidebar_data from '../../utils/sidebar_data';
-
-const recommendedHotels = sidebar_data.map((item, index ) => {
-return (
-<div key="index" className="sidebar__element">
-    <div className="left-div">
-    <img src={item.image}/>
-    </div>
-    <div className="center-div">
-    <h2>{item.title}</h2>
-    <h3>{item.location}</h3>
-    <div class="badge badge-danger">{item.price + "$"}</div>
-    </div>
-    <div className="right-div">
-    <i class="fas fa-ellipsis-h"></i>
-    </div>
-</div>
-)
-} );
 
 class Sidebar extends React.Component {
-    state = {  }
-    render() { 
-        return ( 
-            <div className="sidebar">
-                <h1>More than just hotels</h1>
-                <span>{recommendedHotels}</span>
-            </div>
-         );
-    }
+  render() {
+    return (
+      <div className="sidebar">
+        <div className="sidebar-block sidebar-hotels">
+          <h2>More than just hotels</h2>
+          <div className="s-list">
+            {sidebarData.map(hotel => {
+              return (
+                <div className="s-hotel">
+                  <div
+                    className="s-photo"
+                    style={{ backgroundImage: `url(${hotel.image})` }}
+                  ></div>
+                  <div className="s-info">
+                    <span className="s-title">{hotel.title}</span>
+                    <span className="s-location">{hotel.location}</span>
+                    <span className="s-price">{hotel.price}$</span>
+                  </div>
+                  <div className="s-button">
+                    <div className="s-dot"></div>
+                    <div className="s-dot"></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
- 
+
 export default Sidebar;

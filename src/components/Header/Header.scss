@@ -2,12 +2,32 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: #eeeeee;
   padding: 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 
   .search-field {
+    border-radius: 20px;
     font-size: 2rem;
     font-weight: bold;
     border: none;
     outline: none;
+    margin-left: 3px;
+    padding-left: 13px;
   }
+
+  .search-loupe-circle {
+    width: 50px;
+    border: 1px solid #757575;
+    border-radius: 50%;
+    
+    .search-loupe {
+      color: #757575;
+      font-size: 2rem;
+      margin-left: 9px;
+      margin-top: 7px;
+    }
+  }
+
 }
