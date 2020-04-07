@@ -69,7 +69,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header filterHotels={this.filterHotels} />
+        <Header filterHotels={this.filterHotels} filterHotelsPrice={this.filterHotelsPrice}/>
         <MainContainer data={this.state.hotels} switchSort={this.switchSort} sort={this.state.sort} />
       </div>
     );
