@@ -18,6 +18,7 @@ const MainContainer = (props) => {
                 <div className="hotel__info">
                   <span className="hotel-name">{hotel.title}</span>
                   <p>{hotel.location}</p>
+                  <span className="hotel-price">{hotel.price}$</span>
                 </div>
               </div>
             );

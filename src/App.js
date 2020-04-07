@@ -20,6 +20,17 @@ class App extends React.Component {
     });
   };
 
+
+  filterHotelsPrice = price => {
+    const filteredHotels = data.filter(hotel => {
+      return hotel.price >= parseInt(price);
+    });
+
+    this.setState({
+      hotels: price ? filteredHotels : data
+    });
+  };
+
   sortHotels = () => {
     let aMoreB;
     let bMoreA;
