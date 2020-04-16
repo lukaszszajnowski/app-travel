@@ -49,7 +49,11 @@ class App extends React.Component {
       hotel.price = Math.ceil(hotel.price * rates[this.state.currency])
       return hotel;
     })
-    console.log(hotelsNew);
+    
+    this.setState({
+      hotels: hotelsNew
+    });
+
   }
 
   sortHotels = () => {
