@@ -11,9 +11,9 @@ const MainContainer = (props) => {
           <div className="tools" style={{width: '100%'}}>
             <input type="button" value={props.sort ? 'A-Z' : 'Z-A'} onClick={props.switchSort} />
           </div>
-          {props.data.map(hotel => {
+          {props.data.map((hotel) => {
             return (
-              <div className="hotel">
+              <div className="hotel" key={hotel.id}>
                 <img src={hotel.image} alt={hotel.title} />
                 <div className="hotel__info">
                   <span className="hotel-name">{hotel.title}</span>

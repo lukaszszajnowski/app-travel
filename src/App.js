@@ -2,12 +2,15 @@ import React from 'react';
 import './App.scss';
 import MainContainer from './components/MainContainer/MainContainer';
 import Header from './components/Header/Header';
-import data from './utils/data';
+import rates from './utils/rates';
+import axios from 'axios';
 
 class App extends React.Component {
   state = {
     hotels: [],
-    sort: true
+    sort: true,
+    dataFromApi: null,
+    currency: 'USD'
   };
 
   filterHotels = name => {
@@ -16,20 +19,38 @@ class App extends React.Component {
     });
 
     this.setState({
-      hotels: name.length > 0 ? filteredHotels : data
+      hotels: name.length > 0 ? filteredHotels : this.state.dataFromApi
     });
   };
 
 
   filterHotelsPrice = price => {
-    const filteredHotels = data.filter(hotel => {
+    const filteredHotels = this.state.dataFromApi.filter(hotel => {
       return hotel.price >= parseInt(price);
     });
 
     this.setState({
-      hotels: price ? filteredHotels : data
+      hotels: price ? filteredHotels : this.state.dataFromApi
     });
   };
+
+
+  convertPrice = event => {
+    console.log(event.target.value);
+    this.setState({
+      currency: event.target.value
+    });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('PrevProps is ' + prevProps);
+    // console.log('PrevState is ' + prevState);
+    const hotelsNew = this.state.dataFromApi.map(hotel => {
+      hotel.price = Math.ceil(hotel.price * rates[this.state.currency])
+      return hotel;
+    })
+    console.log(hotelsNew);
+  }
 
   sortHotels = () => {
     let aMoreB;
@@ -44,7 +65,7 @@ class App extends React.Component {
       bMoreA = 1;
     }
 
-    return data.sort((a, b) => {
+    return this.state.dataFromApi.sort((a, b) => {
       if (a.title > b.title) {
         return aMoreB;
       } else if (b.title > a.title) {
@@ -63,13 +84,26 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    axios.get('https://nodejs-mysql-it-academy.herokuapp.com/hotels').then((res) => { 
+    this.setState({
+      dataFromApi: res.data
+    })
     this.switchSort();
+  });
   }
 
   render() {
     return (
       <div className="App">
         <Header filterHotels={this.filterHotels} filterHotelsPrice={this.filterHotelsPrice}/>
+        <form>
+        <select onChange={this.convertPrice}>
+                        <option>USD</option>
+                        <option>EUR</option>
+                        <option>PLN</option>
+                        <option>CHF</option>
+                    </select>
+        </form>
         <MainContainer data={this.state.hotels} switchSort={this.switchSort} sort={this.state.sort} />
       </div>
     );
