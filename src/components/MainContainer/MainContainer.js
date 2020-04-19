@@ -7,7 +7,7 @@ const MainContainer = (props) => {
   
     return (
       <div className="main-container">
-        <Sidebar />
+        <Sidebar convertPrice={props.convertPrice} currencySymbol={props.currencySymbol}/>
         <div className="hotels">
           <div className="tools" style={{width: '100%'}}>
           <form>

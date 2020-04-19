@@ -2,8 +2,23 @@ import React from 'react';
 import sidebarData from '../../utils/sidebar_data';
 import './Sidebar.scss';
 import AddHotel from '../AddHotel/AddHotel';
+// import axios from 'axios';
 
 class Sidebar extends React.Component {
+
+  // state = {
+  //   sidebarData: ''
+  // };
+
+  // componentDidMount() {
+  //   axios.get('https://nodejs-mysql-it-academy.herokuapp.com/hotels/recommended').then((res) => { 
+  //   this.setState({
+  //     sidebarData: res.data
+  //   })
+  //   this.switchSort();
+  // });
+  // }
+
   render() {
     return (
       <div className="sidebar">

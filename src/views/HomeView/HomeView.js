@@ -45,7 +45,9 @@ class HomeView extends React.Component {
     // console.log('PrevProps is ' + prevProps);
     // console.log('PrevState is ' + prevState);
     if (prevState.currency !== this.state.currency) {
-    const hotelsNew = this.state.dataFromApi.map(hotel => {
+      const dataCopy = JSON.parse(JSON.stringify(this.state.dataFromApi));
+
+    const hotelsNew = dataCopy.map(hotel => {
       hotel.price = Math.ceil(hotel.price * rates[this.state.currency])
       return hotel;
     })
