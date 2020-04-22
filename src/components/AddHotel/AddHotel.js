@@ -33,19 +33,23 @@ class AddHotel extends React.Component {
     }
 
     render() {
+        if(!this.props.show){
+            return null;
+        }
+
         return (
             <div className="add-container">
-                <form>
-                    <input type="text" placeholder="Title" onChange={(event) => {this.setValue('title', event.target.value)}} />
-                    <input type="text" placeholder="Image" onChange={(event) => {this.setValue('image', event.target.value)}}/>
-                    <input type="text" placeholder="Price" onChange={(event) => {this.setValue('price', event.target.value)}}/>
-                    <select onChange={(event) => {this.setValue('type', event.target.value)}}>
+                <form className="form-group">
+                    <input type="text" className="form-control" placeholder="Title" onChange={(event) => {this.setValue('title', event.target.value)}} />
+                    <input type="text" className="form-control" placeholder="Image" onChange={(event) => {this.setValue('image', event.target.value)}}/>
+                    <input type="text" className="form-control" placeholder="Price" onChange={(event) => {this.setValue('price', event.target.value)}}/>
+                    <select className="form-control form-control-sm" onChange={(event) => {this.setValue('type', event.target.value)}}>
                         <option>Normal</option>
                         <option>Plus</option>
                         <option>Premium</option>
                     </select>
-                    <input type="text" placeholder="Location" onChange={(event) => {this.setValue('location', event.target.value)}} />
-                    <input type="button" value="Add hotel" onClick={this.addNewHotel}/>
+                    <input type="text" className="form-control" placeholder="Location" onChange={(event) => {this.setValue('location', event.target.value)}} />
+                    <input type="button" className="form-control" value="Add" onClick={this.addNewHotel}/>
                 </form>
             </div>
         )
