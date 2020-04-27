@@ -11,16 +11,14 @@ const MainContainer = (props) => {
         <div className="hotels">
           <div className="tools" style={{width: '100%'}}>
           <form>
-            Currency: 
-            <select onChange={props.convertPrice}>
+            <select onChange={props.convertPrice} className="form-control">
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                         <option value="PLN">PLN</option>
                         <option value="CHF">CHF</option>
               </select>
               </form>
-            Change filtering: 
-            <input type="button" value={props.sort ? 'A-Z' : 'Z-A'} onClick={props.switchSort} />
+            <input type="button" value={props.sort ? 'A-Z' : 'Z-A'} onClick={props.switchSort} className="form-control"/>
           </div>
           {props.data.map((hotel) => {
             return (
