@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddHotelView.scss';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { url } from '../../utils/api';
@@ -29,33 +30,32 @@ class AddHotelView extends React.Component {
 
     render() { 
         return ( 
-            <div className="container">
+            <div className="form">
                 <h1>Add new hotel</h1>
-                <form onSubmit={this.addHotel}>
-                    <label>Title:</label>
-                    <input type="text" name="hotelTitle" required />
-                    <label>Image:</label>
-                    <input
-                    type="file"
-                    name="hotelImage"
-                    className="form-field"
-                    required/>
-                     <label>Price:</label>
-                     <input type="text" name="hotelPrice" className="form-field" required />
-                     <label>Type:</label>
-                    <select className="form-field" name="hotelType" required>
-                        <option selected>Normal</option>
-                        <option>Plus</option>
-                        <option>Premium</option>
-                    </select>
-                    <label>Location:</label>
-                    <input 
-                        type="text" 
-                        className="form-field" 
-                        name="hotelLocation" 
-                        required/>
-                    <input type="submit" value="Add hotel" className="submit" />
-                    </form>
+                  <form onSubmit={this.addHotel}>
+                    <div className="form-group">
+                      <label>Title: <input type="text" className="form-control" name="hotelTitle" required /></label>
+                    </div>
+                    <div className="form-group">
+                      <label>Image: <input type="file" name="hotelImage" required/></label>
+                    </div>
+                    <div className="form-group">
+                      <label>Price: <input type="text" className="form-control" name="hotelPrice" required /></label>
+                    </div>
+                    <div className="form-group"><label>Type: <select class="form-control" name="hotelType" required>
+                          <option selected>Normal</option>
+                          <option>Plus</option>
+                          <option>Premium</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div className="form-group">
+                      <label>Location: <input type="text" className="form-control" name="hotelLocation" required/></label>
+                    </div>
+                    <div className="form-group">
+                      <input type="submit" value="Add hotel" className="btn btn-primary" />
+                    </div>
+                  </form>
             </div>
          )
     }

@@ -25,21 +25,21 @@ class TopBar extends React.Component {
 
                 {
                 !isAuthorized && (
-                    <div>
+                    <>
                     <li><Link to='/register'>Register</Link></li>
                     <li><input type="button" value="Login" className="btn btn-primary" onClick={this.handleClick}/></li>
-                    </div>
+                    </>
                     )
                 }
 
                 {
                 isAuthorized && (
-                    <div>
+                    <>
                     <li><Link to='/contact-us'>Contact us</Link></li>
-                    <Link to="/add-hotel">Add hotels</Link>
-                    <input type="button" value="Logout" onClick={this.handleLogoutClick} />
+                    <li><Link to="/add-hotel">Add hotels</Link></li>
+                    <input type="button" value="Logout" className="btn btn-primary" onClick={this.handleLogoutClick} />
                     <div className="user-profile">{user.username}</div>
-                    </div>
+                    </>
                     )
                 }
                     </ul> 
