@@ -31,7 +31,7 @@ const MainContainer = (props) => {
           )
         }
           
-        }
+      
         </div>
       </div>
     );

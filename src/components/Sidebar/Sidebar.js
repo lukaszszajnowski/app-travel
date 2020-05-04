@@ -12,7 +12,7 @@ class Sidebar extends React.Component {
     show: false
   };
 
-  showModal = e => {
+  showModal = () => {
     this.setState({
       show: !this.state.show
     });
