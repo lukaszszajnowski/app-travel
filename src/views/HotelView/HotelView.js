@@ -14,29 +14,30 @@ class HotelView extends React.Component {
 
     componentDidMount() {
         const API = 'https://nodejs-mysql-it-academy.herokuapp.com/hotels/';
-        axios.get(API + this.props.match.params.id).then(res => {
+
+        axios.get(API + this.props.match.params.id).then(response => {
             this.setState({
-                hotel: res.data
+                hotel: response.data
             })
         }).catch(error => {
             console.log(error);
         })
     }
 
-    render() { 
+    render() {
         const { title, price, description, wifi, image} = this.state.hotel;
-        return ( 
+        return (
             <div>
                 <ul>
                     <li>{title}</li>
+                    <li><img src={image} /></li>
                     <li>{price}</li>
                     <li>{description}</li>
                     <li>{wifi}</li>
-                    <img src={image} alt=""/>
                 </ul>
             </div>
-         );
+        );
     }
 }
- 
+
 export default HotelView;

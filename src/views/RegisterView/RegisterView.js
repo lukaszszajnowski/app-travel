@@ -1,4 +1,5 @@
 import React from 'react';
+import './RegisterView.scss';
 import axios from 'axios';
 
 class RegisterView extends React.Component {
@@ -31,16 +32,21 @@ register = (event) => {
 
     render() { 
         return ( 
-            <div className="container">
+            <div className="form">
                 <h1>Register</h1>
                 <form onSubmit={this.register}>
-                    <label>Username:</label>
-                    <input type="text" name="username" required />
-                    <label>E-mail:</label>
-                    <input type="email" name="email" required />
-                    <label>Password:</label>
-                    <input type="password" name="password" required />
-                    <input type="submit" value="Register" />
+                    <div className="form-group">
+                        <label>Username:<input type="text" className="form-control" name="username" placeholder="Your name" required /></label>
+                    </div>
+                    <div className="form-group">
+                        <label>E-mail:<input type="email" className="form-control" name="email" placeholder="name@example.com" required /></label>
+                    </div>
+                    <div className="form-group">
+                        <label>Password:<input type="password" className="form-control" name="password" placeholder="********" required /></label>
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Register" className="btn btn-primary" />
+                    </div>
                 </form>
             </div>
          )

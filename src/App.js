@@ -8,6 +8,7 @@ import RegisterView from './views/RegisterView/RegisterView';
 import AddHotelView from './views/AddHotelView/AddHotelView';
 import TopBar from './components/TopBar/TopBar';
 import ContactUsView from './views/ContactUsView/ContactUsView';
+import UserHotelsView from './views/UserHotelsView/UserHotelsView';
 import axios from 'axios';
 import { url } from './utils/api';
 import PrivateRoute from './PrivateRoute';
@@ -64,17 +65,28 @@ class App extends React.Component {
         />
           <Switch>
             <Route 
-            path="/hotel/:id"
-            component={HotelView} />
-            <Route path="/login" component={LoginView} />
-            <Route path="/register" component={RegisterView} />
+              path="/hotel/:id"
+              component={HotelView} />
+            <Route 
+              path="/login" 
+              component={LoginView} />
+            <Route 
+              path="/register" 
+              component={RegisterView} />
+            <PrivateRoute 
+              path="/my-hotels" 
+              component={UserHotelsView}
+              isAuthorized={this.state.isAuthorized} />
             <PrivateRoute 
               path="/add-hotel" 
               component={AddHotelView}
-              isAuthorized={this.state.isAuthorized}
-            />
-            <Route path="/contact-us" component={ContactUsView} />
-            <Route path="/" component={HomeView} />
+              isAuthorized={this.state.isAuthorized} />
+            <Route 
+              path="/contact-us" 
+              component={ContactUsView} />
+            <Route 
+              path="/" 
+              component={HomeView} />
           </Switch>
         </Router>
         </div>

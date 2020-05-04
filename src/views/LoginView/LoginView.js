@@ -1,4 +1,5 @@
 import React from 'react';
+import './LoginView.scss';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
@@ -33,14 +34,18 @@ class LoginView extends React.Component {
 
     render() { 
         return ( 
-            <div className="container">
+            <div className="form">
                 <h1>Login</h1>
                 <form onSubmit={this.login}>
-                    <label>Username:</label>
-                    <input type="text" name="username" required />
-                    <label>Password:</label>
-                    <input type="password" name="password" required />
-                    <input type="submit" value="Login" />
+                    <div className="form-group">
+                        <label>Username:<input type="text" name="username" className="form-control" placeholder="Your username" required /></label>
+                    </div>
+                    <div className="form-group">
+                        <label>Password:<input type="password" name="password" className="form-control" placeholder="********" required /></label>
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Login" className="btn btn-primary" />
+                    </div>
                 </form>
             </div>
          )

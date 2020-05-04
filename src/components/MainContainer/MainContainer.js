@@ -1,7 +1,8 @@
 import React from 'react';
 import './MainContainer.scss';
 import Sidebar from '../Sidebar/Sidebar';
-import {Link} from 'react-router-dom';
+import Hotel from '../Hotel/Hotel';
+import Preloader from '../Preloader/Preloader';
 
 const MainContainer = (props) => {
   
@@ -20,20 +21,17 @@ const MainContainer = (props) => {
               </form>
             <input type="button" value={props.sort ? 'A-Z' : 'Z-A'} onClick={props.switchSort} className="form-control"/>
           </div>
-          {props.data.map((hotel) => {
-            return (
-              <div className="hotel" key={hotel.id}>
-                <img src={hotel.image} alt={hotel.title} />
-                <div className="hotel__info">
-                  <Link to={"hotel/" + hotel.id}>
-                    <span className="hotel-name">{hotel.title}</span>
-                  </Link>
-                  <p>{hotel.location}</p>
-            <span className="hotel-price">{hotel.price}{props.currencySymbol}</span>
-                </div>
-              </div>
-            );
-          })}
+
+          {props.data.length > 0 ? (
+            props.data.map((hotel, index) => {
+            return <Hotel data={hotel} key={index} convertPrice={props.convertPrice} currencySymbol={props.currencySymbol}/>
+          })
+          ) : (
+            <Preloader />
+          )
+        }
+          
+        }
         </div>
       </div>
     );

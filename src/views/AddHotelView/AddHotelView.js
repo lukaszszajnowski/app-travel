@@ -34,13 +34,13 @@ class AddHotelView extends React.Component {
                 <h1>Add new hotel</h1>
                   <form onSubmit={this.addHotel}>
                     <div className="form-group">
-                      <label>Title: <input type="text" className="form-control" name="hotelTitle" required /></label>
+                      <label>Title: <input type="text" className="form-control" name="hotelTitle" placeholder="Hotel name" required /></label>
                     </div>
                     <div className="form-group">
                       <label>Image: <input type="file" name="hotelImage" required/></label>
                     </div>
                     <div className="form-group">
-                      <label>Price: <input type="text" className="form-control" name="hotelPrice" required /></label>
+                      <label>Price: <input type="text" className="form-control" name="hotelPrice" placeholder="How much $?" required /></label>
                     </div>
                     <div className="form-group"><label>Type: <select class="form-control" name="hotelType" required>
                           <option selected>Normal</option>
@@ -50,7 +50,7 @@ class AddHotelView extends React.Component {
                       </label>
                     </div>
                     <div className="form-group">
-                      <label>Location: <input type="text" className="form-control" name="hotelLocation" required/></label>
+                      <label>Location: <input type="text" className="form-control" name="hotelLocation" placeholder="Place name" required/></label>
                     </div>
                     <div className="form-group">
                       <input type="submit" value="Add hotel" className="btn btn-primary" />

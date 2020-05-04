@@ -20,14 +20,15 @@ class TopBar extends React.Component {
         return ( 
             <nav className="top-bar-navi">
                 <ul>
-                <li><img src={logo} alt='logo' /></li>
-                <li><Link to='/'>Home</Link></li>
+                <Link to='/'><img src={logo} alt='logo' /></Link>
+                <li><Link to='/'><i className="fas fa-home"></i> Home</Link></li>
+                <li><Link to='/contact-us'><i className="fas fa-comments"></i> Contact us</Link></li>
 
                 {
                 !isAuthorized && (
                     <>
-                    <li><Link to='/register'>Register</Link></li>
-                    <li><input type="button" value="Login" className="btn btn-primary" onClick={this.handleClick}/></li>
+                    <li><Link to='/register'><i className="fas fa-sign-in-alt"></i> Register</Link></li>
+                    <input type="button" value="Login" className="btn btn-primary" onClick={this.handleClick}/>
                     </>
                     )
                 }
@@ -35,10 +36,10 @@ class TopBar extends React.Component {
                 {
                 isAuthorized && (
                     <>
-                    <li><Link to='/contact-us'>Contact us</Link></li>
-                    <li><Link to="/add-hotel">Add hotels</Link></li>
-                    <input type="button" value="Logout" className="btn btn-primary" onClick={this.handleLogoutClick} />
-                    <div className="user-profile">{user.username}</div>
+                    <li><Link to="/add-hotel"><i className="fas fa-plus-circle"></i> Add hotel</Link></li>
+                    <li><Link to="/my-hotels"><i class="fas fa-building"></i> My hotels</Link></li>
+                    <input type="button" value="Logout" className="btn btn-outline-primary" onClick={this.handleLogoutClick} />
+                    <div className="user-profile"><i className="fas fa-user"></i> user: {user.username}</div>
                     </>
                     )
                 }
