@@ -20,7 +20,7 @@ class Header extends React.Component {
         <input type="text" className="search-field" placeholder="Enter location" onChange={this.handleSearch} />
       </div>
       <div className="header-second">
-        <div className="price-field"><i class="fas fa-money-bill-wave dollar-icon"></i><input type="text" className="pice-filter" placeholder="Min. Price" onChange={this.handleFilterPrice}/><i class="fas fa-dollar-sign dollar-icon"></i></div>
+        <div className="price-field"><i class="fas fa-money-bill-wave dollar-icon"></i><input type="text" className="price-filter" placeholder="Min. Price" onChange={this.handleFilterPrice}/><span className="currency-txt">{this.props.currencySymbol}</span></div>
       </div>
       </>
     );
