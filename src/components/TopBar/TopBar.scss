@@ -1,5 +1,14 @@
+// variables
+$font-size: 15px;
+
 .top-bar-navi {
     margin: 0 0 10px;
+    .logo {
+        display: block;
+        @media screen and (max-width: 1023px) {
+            margin: 0 auto;
+          }
+    }
     ul {
         display: block;
         display: flex; 
@@ -7,10 +16,15 @@
         justify-content: space-between;
         list-style: none;
         margin: 0 5px;
+        @media screen and (max-width: 1023px) {
+            flex-direction: column;
+          }
         li {
             display: inline-block;
             line-height: 40px;
-            font-size: 20px;
+            @media screen and (max-width: 1023px) {
+                text-align: center;
+              }
             &:after {
                 content: '';
                 display: block;
@@ -23,15 +37,28 @@
             &:hover:after {
                 width: 80%;
                 background: #007bff;
+                @media screen and (max-width: 1023px) {
+                    width: 100px;
+                  }
               }
         }
         a {
             text-decoration: none;
+            font-size: $font-size;
+        }
+        .btn {
+            @media screen and (max-width: 1023px) {
+                width: 100px;
+                margin: 0 auto;
+              }
         }
     }
     .user-profile {
         line-height: 40px;
-        font-size: 15px;
+        font-size: $font-size;
         color: #007bff;
+        @media screen and (max-width: 1023px) {
+            margin: 0 auto;
+          }
     }
 }
