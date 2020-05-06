@@ -1,4 +1,5 @@
 import React from 'react';
+import './HotelView.scss';
 import axios from 'axios';
 
 class HotelView extends React.Component {
@@ -25,16 +26,16 @@ class HotelView extends React.Component {
     }
 
     render() {
-        const { title, price, description, wifi, image} = this.state.hotel;
+        const { title, price, description, wifi, image } = this.state.hotel;
         return (
-            <div>
-                <ul>
-                    <li>{title}</li>
-                    <li><img src={image} /></li>
-                    <li>{price}</li>
-                    <li>{description}</li>
-                    <li>{wifi}</li>
-                </ul>
+            <div className="container">
+                    <h2>{title}</h2>
+                    <img className="hotel-photo" src={image} alt={image} />
+                    <div className="container-hotel-info">
+                        <div className="hotel-info">Price: <span className="hotel-price">{price}</span></div>
+                        <div className="hotel-info">Rating: {description}</div>
+                        <div className="hotel-info">WIFI: {wifi ? "YES" : "NO"}</div>
+                    </div>
             </div>
         );
     }

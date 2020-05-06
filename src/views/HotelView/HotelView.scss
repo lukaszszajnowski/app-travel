@@ -1,0 +1,37 @@
+.container {
+    background-color: #eeeeee;
+    padding: 15px 20px 50px 20px;
+    border-radius: 30px;
+    .hotel-photo {
+        width: 80%;
+        display: block;
+        margin: auto;
+        border-radius: 25px;
+    }
+    h2 {
+        text-align: center;
+    }
+    .container-hotel-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .hotel-info {
+            width: 300px;
+            height: 40px;
+            margin: 10px 5px 5px 0;
+            line-height: 40px;
+            border-radius: 25px;
+            text-align: center;
+            background-color: #dedede;
+            .hotel-price {
+                color: #12b712;;
+                background-color: rgba(#12b712, 0.1);
+                font-weight: bold;
+                padding: 3px 5px;
+                width: 50px;
+                border-radius: 15px;
+                text-align: center;
+            }
+            }
+        }
+}
