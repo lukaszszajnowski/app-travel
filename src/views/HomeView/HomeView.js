@@ -2,7 +2,8 @@ import React from 'react';
 import MainContainer from '../../components/MainContainer/MainContainer';
 import Header from '../../components/Header/Header';
 import rates from '../../utils/rates';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { getHotels } from '../../store/actions/hotels-actions';
 
 class HomeView extends React.Component {
   state = {
@@ -18,18 +19,18 @@ class HomeView extends React.Component {
     });
 
     this.setState({
-      hotels: name.length > 0 ? filteredHotels : this.state.dataFromApi
+      hotels: name.length > 0 ? filteredHotels : this.props.hotels
     });
   };
 
 
-  filterHotelsPrice = price => {
-    const filteredHotels = this.state.dataFromApi.filter(hotel => {
+  filterHotelsPrice = (price) => {
+    const filteredHotels = this.props.hotels.filter((hotel) => {
       return hotel.price >= parseInt(price);
     });
 
     this.setState({
-      hotels: price ? filteredHotels : this.state.dataFromApi
+      hotels: price.length > 0 ? filteredHotels : this.props.hotels,
     });
   };
 
@@ -62,7 +63,6 @@ class HomeView extends React.Component {
     let aMoreB;
     let bMoreA;
 
-    // console.log('App -> sortHotels -> this.state.sort', this.state.sort)
     if (this.state.sort) {
       aMoreB = 1;
       bMoreA = -1;
@@ -71,41 +71,55 @@ class HomeView extends React.Component {
       bMoreA = 1;
     }
 
-    return this.state.dataFromApi.sort((a, b) => {
+    console.log('HomeView -> sortHotels -> this.props.hotels', this.props.hotels)
+    return this.props.hotels.sort((a, b) => {
       if (a.title > b.title) {
-     return aMoreB;
+        return aMoreB;
       } else if (b.title > a.title) {
         return bMoreA;
       } else {
         return 0;
       }
-    })
-  }
+    });
+  };
 
   switchSort = () => {
     this.setState({
       sort: !this.state.sort,
-      hotels: this.sortHotels()
-    })
-  }
+      hotels: this.sortHotels(),
+    });
+  };
 
   componentDidMount() {
-    axios.get('https://nodejs-mysql-it-academy.herokuapp.com/hotels').then((res) => { 
-    this.setState({
-      dataFromApi: res.data
-    })
-    this.switchSort();
-  });
+    if (!this.props.hotels.length) {
+      this.props.getHotels();
+    }
   }
 
   render() {
     return (
       <div>
-        <Header filterHotels={this.filterHotels} filterHotelsPrice={this.filterHotelsPrice} currencySymbol={this.state.currency} />
-        <MainContainer data={this.state.hotels} switchSort={this.switchSort} sort={this.state.sort} convertPrice={this.convertPrice} currencySymbol={this.state.currency} />
+        <Header 
+          filterHotels={this.filterHotels} 
+          filterHotelsPrice={this.filterHotelsPrice} 
+          currencySymbol={this.state.currency} />
+        <MainContainer 
+          data={this.props.hotels} 
+          switchSort={this.switchSort} 
+          sort={this.state.sort} 
+          convertPrice={this.convertPrice} 
+          currencySymbol={this.state.currency} />
       </div>
     );
   }
 }
 
-export default HomeView;
+const mapStateToProps = (state) => ({
+  hotels: state.hotels
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getHotels: (hotels) => dispatch(getHotels())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

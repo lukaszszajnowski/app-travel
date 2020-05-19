@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Hotel.scss';
+import LikeButton from '../LikeButton/LikeButton';
 
 const Hotel = ({ data, currencySymbol }) => {
 return (
@@ -12,6 +13,7 @@ return (
                   </Link>
                   <p>{data.location}</p>
                   <span className="hotel-price">{data.price}{currencySymbol}</span>
+                  <LikeButton hotel={data} />
                 </div>
               </div>
               )

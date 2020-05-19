@@ -1,9 +1,17 @@
 .main-container {
   background-color: #eeeeee;
   display: flex;
+  @media screen and (max-width: 1023px) {
+    flex-direction: column;
+  }
   padding: 25px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
+  .sidebar {
+    @media screen and (max-width: 1023px) {
+      order: 2;
+    } 
+  }
 
   .hotels {
     display: flex;
