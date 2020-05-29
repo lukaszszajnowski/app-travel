@@ -9,6 +9,7 @@ import AddHotelView from './views/AddHotelView/AddHotelView';
 import TopBar from './components/TopBar/TopBar';
 import ContactUsView from './views/ContactUsView/ContactUsView';
 import UserHotelsView from './views/UserHotelsView/UserHotelsView';
+import FavouriteView from './views/FavouriteView/FavouriteView';
 import axios from 'axios';
 import { url } from './utils/api';
 import PrivateRoute from './PrivateRoute';
@@ -84,6 +85,9 @@ class App extends React.Component {
             <Route 
               path="/contact-us" 
               component={ContactUsView} />
+            <Route 
+              path="/favourite"
+              component={FavouriteView} />
             <Route 
               path="/" 
               component={HomeView} />

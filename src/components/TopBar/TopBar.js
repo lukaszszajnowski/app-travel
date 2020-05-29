@@ -22,6 +22,7 @@ class TopBar extends React.Component {
                 <ul>
                 <Link to='/'><img src={logo} className="logo" alt='logo' /></Link>
                 <li><Link to='/'><i className="fas fa-home"></i> Home</Link></li>
+                <li><Link to="/favourite"><i class="fas fa-heart"></i> Favourites</Link></li>
                 <li><Link to='/contact-us'><i className="fas fa-comments"></i> Contact us</Link></li>
 
                 {

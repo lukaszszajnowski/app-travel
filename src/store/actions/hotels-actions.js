@@ -41,3 +41,10 @@ export const addToFavourites = (hotel) => {
         payload: hotel
     }
 }
+
+export const removeFromFavourites = (hotelId) => {
+    return {
+      type: 'REMOVE_FROM_FAVOURITES',
+      payload: hotelId
+    }
+  }
