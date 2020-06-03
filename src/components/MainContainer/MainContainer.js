@@ -24,7 +24,7 @@ const MainContainer = (props) => {
 
           {props.data.length > 0 ? (
             props.data.map((hotel, index) => {
-            return <Hotel data={hotel} key={index} convertPrice={props.convertPrice} currencySymbol={props.currencySymbol}/>
+            return <Hotel data={hotel} key={index} removable={false} convertPrice={props.convertPrice} currencySymbol={props.currencySymbol}/>
           })
           ) : (
             <Preloader />

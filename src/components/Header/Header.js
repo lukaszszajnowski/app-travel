@@ -5,6 +5,7 @@ import { saveText } from '../../store/actions/hotels-actions';
 
 class Header extends React.Component {
   state = {};
+  inputRef = React.createRef();
 
   handleSearch = (event) => {
     this.props.filterHotels(event.target.value);
@@ -18,12 +19,16 @@ class Header extends React.Component {
     this.props.dispatch(saveText('New text is here!'));
   };
 
+  componentDidMount() {
+    this.inputRef.current.focus();
+  }
+
   render() {
     return (
       <>
       <div className="header">
         <div className="search-loupe-circle"><i class="fas fa-search search-loupe"></i></div>
-        <input type="text" className="search-field" placeholder="Enter location" onChange={this.handleSearch} />
+        <input type="text" ref={this.inputRef} className="search-field" placeholder="Enter location" onChange={this.handleSearch} />
       </div>
       <div className="header-second">
         <div className="price-field"><i class="fas fa-money-bill-wave dollar-icon"></i><input type="text" className="price-filter" placeholder="Min. Price" onChange={this.handleFilterPrice}/><span className="currency-txt">{this.props.currencySymbol}</span></div>

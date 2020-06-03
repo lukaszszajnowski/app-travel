@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Hotel.scss';
 import LikeButton from '../LikeButton/LikeButton';
+import PropTypes from 'prop-types';
 
-const Hotel = ({ data, currencySymbol }) => {
+const Hotel = ({ data, removable, currencySymbol }) => {
 return (
 <div className="hotel" key={data.id}>
                 <img src={data.image} alt={data.title} />
@@ -18,5 +19,10 @@ return (
               </div>
               )
               }
+
+Hotel.propTypes = {
+  data: PropTypes.object,
+  removable: PropTypes.bool,
+}
  
 export default Hotel;

@@ -10,6 +10,7 @@ import TopBar from './components/TopBar/TopBar';
 import ContactUsView from './views/ContactUsView/ContactUsView';
 import UserHotelsView from './views/UserHotelsView/UserHotelsView';
 import FavouriteView from './views/FavouriteView/FavouriteView';
+import Notification from './components/Notification/Notification';
 import axios from 'axios';
 import { url } from './utils/api';
 import PrivateRoute from './PrivateRoute';
@@ -59,6 +60,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
+          <Notification />
         <TopBar 
         isAuthorized={this.state.isAuthorized} 
         user={this.state.user}

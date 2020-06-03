@@ -1,35 +1,22 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import Hotel from '../../components/Hotel/Hotel';
 import Preloader from '../../components/Preloader/Preloader';
-import { url } from '../../utils/api';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserHotels } from '../../store/actions/hotels-actions';
 
-class UserHotelsView extends React.Component {
-    state = {
-        hotels: [],
-    };
+const UserHotelsView = () => {
+        const hotels = useSelector((state) => state.userHotels);
+        const dispatch = useDispatch();
 
-    componentDidMount() {
-        const options = {
-            headers: {
-                'x-access-token': localStorage.getItem('token')
-            }
-        }
-        axios 
-        .get(`${url}/my-hotels`, options)
-        .then((res) => {
-            this.setState({
-                hotels: res.data,
-            })
-        })
-    }
+        useEffect(() => {
+            dispatch(getUserHotels());
+        }, []);
 
-    render() { 
         return ( 
             <div>
                 <div>
-                    {this.state.hotels.length ? (
-                        this.state.hotels.map((hotel) => <Hotel data={hotel} />)
+                    {hotels.length ? (
+                        hotels.map((hotel) => <Hotel data={hotel} />)
                     ) : (
                         <Preloader />
                     )
@@ -38,6 +25,5 @@ class UserHotelsView extends React.Component {
             </div>
          );
     }
-}
  
 export default UserHotelsView;

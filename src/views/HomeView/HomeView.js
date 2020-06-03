@@ -98,7 +98,7 @@ class HomeView extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <Header 
           filterHotels={this.filterHotels} 
           filterHotelsPrice={this.filterHotelsPrice} 
@@ -109,7 +109,7 @@ class HomeView extends React.Component {
           sort={this.state.sort} 
           convertPrice={this.convertPrice} 
           currencySymbol={this.state.currency} />
-      </div>
+      </>
     );
   }
 }

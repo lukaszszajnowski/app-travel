@@ -2,14 +2,19 @@ import React from 'react';
 import heartEmpty from '../../assets/images/heart.svg';
 import heartFilled from '../../assets/images/heart-filled.svg';
 import { connect } from 'react-redux';
-import { addToFavourites } from '../../store/actions/hotels-actions';
+import { addToFavourites, removeFromFavourites } from '../../store/actions/hotels-actions';
 import './LikeButton.scss';
 
 class LikeButton extends React.Component {
     handleClick = () => {
-        const { hotel, addToFavourites } = this.props;
+        const { hotel, addToFavourites, removeFromFavourites } = this.props;
+
+        if (this.isFav(hotel.id)) {
+            removeFromFavourites(hotel)
+        } else {
 
         addToFavourites(hotel);
+    }
     }
 
     isFav = (hotelId) => {
@@ -38,7 +43,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addToFavourites: (hotel) => dispatch(addToFavourites(hotel))
+    addToFavourites: (hotel) => dispatch(addToFavourites(hotel)),
+    removeFromFavourites: (hotel) => dispatch(removeFromFavourites(hotel))
 })
  
 export default connect(mapStateToProps, mapDispatchToProps)(LikeButton);

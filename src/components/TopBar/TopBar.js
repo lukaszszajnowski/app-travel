@@ -2,6 +2,7 @@ import React from 'react';
 import './TopBar.scss';
 import logo from './logo.png'
 import { Link, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class TopBar extends React.Component {
@@ -29,7 +30,7 @@ class TopBar extends React.Component {
                 !isAuthorized && (
                     <>
                     <li><Link to='/register'><i className="fas fa-sign-in-alt"></i> Register</Link></li>
-                    <input type="button" value="Login" className="btn btn-primary" onClick={this.handleClick}/>
+                    <button className="btn btn-primary" onClick={this.handleClick}><i class="far fa-smile"></i> Login</button>
                     </>
                     )
                 }
@@ -40,7 +41,8 @@ class TopBar extends React.Component {
                     <li><Link to="/add-hotel"><i className="fas fa-plus-circle"></i> Add hotel</Link></li>
                     <li><Link to="/my-hotels"><i class="fas fa-building"></i> My hotels</Link></li>
                     <div className="user-profile"><i className="fas fa-user"></i> {user.username}</div>
-                    <input type="button" value="Logout" className="btn btn-outline-primary" onClick={this.handleLogoutClick} />
+                    <button className="btn btn-primary"><i class="fas fa-heart"></i> {this.props.counter}</button>
+                    <button className="btn btn-outline-primary" onClick={this.handleLogoutClick}><i class="far fa-frown"></i> Logout </button>
                     </>
                     )
                 }
@@ -49,5 +51,11 @@ class TopBar extends React.Component {
          );
     }
 }
- 
-export default withRouter(TopBar);
+
+const mapStateToProps = (state) => {
+    return {
+        counter: state.favourites.length
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(TopBar));

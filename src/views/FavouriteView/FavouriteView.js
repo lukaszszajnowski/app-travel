@@ -18,7 +18,7 @@ const FavouriteView = () => {
     }
 
     return (
-        <div>
+        <>
             <h1>Favourite list</h1>
             <input type="text" onChange={handleChange} />
 
@@ -29,7 +29,7 @@ const FavouriteView = () => {
                     return <p onClick={() => { removeHotel(hotel.id) }}>{hotel.title}</p>
                 })
             }
-        </div>
+        </>
     )
 }
 
