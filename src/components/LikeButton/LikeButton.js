@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (gitdispatch) => ({
     addToFavourites: (hotel) => dispatch(addToFavourites(hotel)),
     removeFromFavourites: (hotel) => dispatch(removeFromFavourites(hotel))
 })
